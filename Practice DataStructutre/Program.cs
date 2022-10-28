@@ -39,11 +39,11 @@ using System.Collections;
 //}
 
 
-var arr = new Array<int>(15);
+//var arr = new Array<int>(15);
 
-arr.AAdd(1);
-arr.AAdd(2);
-arr.AAdd(3);
-arr.Remove(2);
+//arr.AAdd(1);
+//arr.AAdd(2);
+//arr.AAdd(3);
+//arr.Remove(2);
 
-Console.WriteLine(arr.ToString());
+//Console.WriteLine(arr.ToString());
