@@ -58,8 +58,11 @@ using System.Xml;
 
 
 //Console.WriteLine(arr1.ToString());
-int[] nums = { 0, 0, 1};
-var x= Solution.RemoveDuplicates(nums);
+
+
+#region RemoveDuplicates
+int[] nums = { 0, 0, 1 };
+var x = Solution.RemoveDuplicates(nums);
 Console.WriteLine(x);
 public static class Solution
 {
@@ -84,5 +87,7 @@ public static class Solution
 
     }
 }
+
+#endregion
 
 
