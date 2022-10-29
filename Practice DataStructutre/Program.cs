@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Practice_DataStructutre;
 using System.Collections;
+using System.Diagnostics.CodeAnalysis;
+using System.Xml;
 
 //Console.WriteLine("Hello, World!");
 //Hashtable my_hashtable = new Hashtable();
@@ -47,3 +49,40 @@ using System.Collections;
 //arr.Remove(2);
 
 //Console.WriteLine(arr.ToString());
+
+//int[] arr1 = new int[4];
+
+//int[] arr2 = {6,7,8,9,10,11,12};
+//arr1 = arr2;
+//int[] cars = new int[4] { 1, 2, 3,4 };
+
+
+//Console.WriteLine(arr1.ToString());
+int[] nums = { 0, 0, 1};
+var x= Solution.RemoveDuplicates(nums);
+Console.WriteLine(x);
+public static class Solution
+{
+    public static int RemoveDuplicates(int[] nums)
+    {
+        int len = nums.Length;
+        int j = 0;
+        if (len == 0 || len == 1)
+            return len;
+
+
+
+        for (int i = 0; i < len - 1; i++)
+            if (nums[i] != nums[i + 1])
+                nums[j++] = nums[i];
+
+        nums[j++] = nums[len - 1];
+
+        return j;
+
+
+
+    }
+}
+
+
