@@ -79,7 +79,7 @@ namespace Practice_DataStructutre
         public T RemoveFirst()
         {
             if (IsEmpty()) throw new Exception("Empty List");
-            T data= head.data;
+            T data = head.data;
             head = head.next;
             --size;
 
@@ -119,7 +119,123 @@ namespace Practice_DataStructutre
             size++;
 
         }
+        private T Remove(Node<T> node)
+        {
 
+            if(node.prev==null) return RemoveFirst();
+            if(node.next==null) return RemoveLast();
+            node.prev.next = node.next;
+            node.next.prev = node.prev;
+
+            T data = node.data;
+            node = node.next = node.prev = null;
+            --size;
+            return data;
+        }
+
+        public T RemoveAt(int index)
+        {
+            if(index < 0|| index>=size)
+            {
+                throw new Exception("indexnot valid");
+
+            }
+
+            int i;
+            Node<T> trav;
+            if(index<size/2)
+
+            {
+                trav = head;
+                for (i = 0;i != index; i++)
+                {
+                    trav = trav.next;
+
+
+                }
+            }
+            else
+            {
+                trav = tail;
+                for (i = size-1;i!=index; i--)
+                {
+                    trav = trav.prev;
+
+                }
+            }
+
+            return Remove(trav);
+
+        }
+
+
+        public bool Remove(object obj)
+        {
+            Node<T> trav;
+            if(obj==null)
+            {
+                for(trav=head; trav!=null; trav=trav.next)
+                {
+                    if(trav.data==null)
+                    {
+                        Remove(trav);
+                        return true;
+                    }
+
+                }
+            
+            }
+            else
+            {
+                for (trav = head; trav != null; trav = trav.next)
+                {
+                    if (obj.Equals(trav.data))
+                    {
+                        Remove(trav);
+                        return true;
+                    }
+
+                }
+
+            }
+
+            return false;
+        }
+
+
+        public int IndexOf(object obj)
+        {
+            int index = 0;
+            Node<T> trav;
+            if (obj == null)
+            {
+                for (trav = head; trav != null; trav = trav.next, index++)
+                {
+                    if (trav.data == null)
+                    {
+                        return index;
+                    }
+
+                }
+
+            }
+            else
+            {
+                for (trav = head; trav != null; trav = trav.next, index++)
+                {
+                    if (obj.Equals(trav.data))
+                    {
+                        return index;
+                    }
+
+                }
+
+            }
+
+            return -1;
+        }
+
+        public bool Cotains(object ob)=> IndexOf(ob)!=-1;
         public IEnumerator<T> GetEnumerator()
         {
             throw new NotImplementedException();
